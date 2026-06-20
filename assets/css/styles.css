@@ -263,10 +263,15 @@ header .container{display:flex;align-items:center;justify-content:space-between;
   background:var(--surface);border:1px solid var(--border);
   color:var(--text);font-family:var(--font);font-size:0.8rem;
   cursor:pointer;transition:var(--transition);
+  -webkit-appearance:none;-moz-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6,9 12,15 18,9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 6px center;padding-right:24px;
 }
+.filter-group select option{background:var(--bg-card);color:var(--text)}
 .filter-group select:hover{border-color:var(--accent)}
 .filter-group select:focus{outline:none;border-color:var(--accent)}
-.toolbar-actions{display:flex;gap:6px;flex-wrap:wrap}
+.toolbar-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.toolbar-count{margin-left:auto;white-space:nowrap;font-size:0.8rem;color:var(--text-dim)}
 
 /* Changelog */
 .changelog-entry{margin-bottom:12px}
