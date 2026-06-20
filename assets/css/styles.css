@@ -186,7 +186,7 @@ nav a.active{color:var(--accent);background:rgba(59,130,246,0.1)}
 .card-actions .btn{white-space:nowrap;flex-shrink:0}
 
 .toggle-content{display:none;margin-top:12px;padding:12px;border-radius:var(--radius);background:var(--surface);border-left:3px solid var(--accent)}
-.toggle-content.open{display:block}
+.toggle-content.open{display:block;animation:fadeIn 0.3s ease}
 
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
 .tab-btn{
@@ -295,12 +295,6 @@ footer a{color:var(--accent)}
 
 .theme-btn svg,.theme-btn-mobile svg{transition:transform 0.3s ease}
 .theme-btn:active svg,.theme-btn-mobile:active svg{transform:rotate(180deg)}
-
-.toggle-content{max-height:0;overflow:hidden;opacity:0;transition:max-height 0.3s ease,opacity 0.3s ease,margin 0.3s ease,padding 0.3s ease;margin-top:0;padding:0 12px}
-.toggle-content.open{max-height:500px;opacity:1;margin-top:12px;padding:12px}
-
-.nav-overlay{opacity:0;transition:opacity 0.25s ease;pointer-events:none;display:block}
-.nav-overlay.open{opacity:1;pointer-events:auto}
 
 .hamburger:focus-visible,.nav-close:focus-visible,.theme-btn:focus-visible,.theme-btn-mobile:focus-visible,
 nav a:focus-visible,.btn:focus-visible,.tab-btn:focus-visible,.filter-group select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
