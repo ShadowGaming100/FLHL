@@ -37,7 +37,7 @@
         <img src="assets/images/logo.png" alt="">FLHL
       </a>
     </div>
-    <nav id="mainNav" role="dialog" aria-modal="true" aria-label="Navigation menu" onclick="event.stopPropagation()">
+    <nav id="mainNav" role="dialog" aria-modal="true" aria-label="Navigation menu">
       <button class="nav-close" id="navCloseBtn" aria-label="Close navigation menu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -300,20 +300,7 @@ function resetFilters(){
 }
 
 renderHosts('all');
-
-(function(){
-  var nav=document.getElementById('mainNav'),overlay=document.getElementById('navOverlay'),ham=document.getElementById('hamburgerBtn'),close=document.getElementById('navCloseBtn'),themeBtns=document.querySelectorAll('.theme-btn, .theme-btn-mobile');
-  function openNav(){nav.classList.add('open');overlay.classList.add('open');overlay.removeAttribute('aria-hidden');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
-  function closeNav(){nav.classList.remove('open');overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';ham.focus()}
-  function toggleNav(){nav.classList.contains('open')?closeNav():openNav()}
-  function toggleTheme(){var t=document.documentElement.getAttribute('data-theme'),n=t==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n)}
-  if(ham)ham.addEventListener('click',toggleNav);
-  if(close)close.addEventListener('click',toggleNav);
-  if(overlay)overlay.addEventListener('click',toggleNav);
-  for(var i=0;i<themeBtns.length;i++)themeBtns[i].addEventListener('click',function(e){e.stopPropagation();toggleTheme()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav&&nav.classList.contains('open'))closeNav()});
-  if(nav)nav.addEventListener('keydown',function(e){if(e.key==='Tab'){var f=nav.querySelectorAll('a, button, [tabindex]'),fi=Array.prototype.indexOf.call(f,document.activeElement);if(e.shiftKey&&fi===0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&fi===f.length-1){e.preventDefault();f[0].focus()}}});
-})();
 </script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -88,7 +88,7 @@ nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
 nav a{
   padding:6px 12px;border-radius:var(--radius);
   font-size:0.85rem;font-weight:500;color:var(--text-secondary);
-  transition:var(--transition);
+  transition:var(--transition);position:relative;
 }
 nav a:hover{color:var(--text);background:var(--surface)}
 nav a.active{color:var(--accent);background:rgba(59,130,246,0.1)}
