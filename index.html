@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<div class="warn-bar">
+<div class="warn-bar anim-warn">
   <span>FLHL is no longer maintained. Migrating to TrustHost.</span>
   <span class="warn-migrate"><img src="assets/images/logo.png" alt="FLHL"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14,6 20,12 14,18"/></svg><img src="assets/images/trusthost.png" alt="TrustHost"></span>
   <a href="trusthost.html">Read more</a>
@@ -30,15 +30,15 @@
 <header>
   <div class="container">
     <div class="header-left">
-      <button class="hamburger" onclick="toggleNav()" title="Menu">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <a href="index.html" class="logo">
         <img src="assets/images/logo.png" alt="">FLHL
       </a>
     </div>
-    <nav id="mainNav" onclick="event.stopPropagation()">
-      <button class="nav-close" onclick="toggleNav()" title="Close">
+    <nav id="mainNav" role="dialog" aria-modal="true" aria-label="Navigation menu" onclick="event.stopPropagation()">
+      <button class="nav-close" id="navCloseBtn" aria-label="Close navigation menu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
       <a href="index.html" class="active">Home</a>
@@ -46,17 +46,17 @@
       <a href="changelog.html">Changelog</a>
       <a href="trusthost.html">TrustHost</a>
       <a href="archives.html">Archive</a>
-      <button class="btn btn-secondary btn-sm theme-btn-mobile" onclick="event.stopPropagation();toggleTheme()" title="Toggle theme">
+      <button class="btn btn-secondary btn-sm theme-btn-mobile" id="themeBtnMobile">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         Theme
       </button>
     </nav>
   </div>
 </header>
-<div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
 <main>
-  <section class="hero">
+  <section class="hero anim-hero">
     <h1>Free Low / New / Bad Minecraft Hosts List</h1>
     <p>A community-maintained directory that catalogs free Minecraft hosting providers. Each entry includes technical specifications, community ratings, uptime tracking, and documentation of known issues or scams.</p>
     <div class="hero-actions">
@@ -74,26 +74,26 @@
 
   <div class="container">
     <div class="grid">
-      <a href="flhl.html" class="card" style="text-decoration:none;color:inherit">
+      <a href="flhl.html" class="card anim-card" style="text-decoration:none;color:inherit">
         <h3>Hosting list</h3>
         <span class="sub">Low, New, and Bad categories</span>
         <p style="font-size:0.85rem">All 32 reviewed hosting providers with specs, ratings, and warnings.</p>
       </a>
 
-      <a href="changelog.html" class="card" style="text-decoration:none;color:inherit">
+      <a href="changelog.html" class="card anim-card" style="text-decoration:none;color:inherit">
         <h3>Changelog</h3>
         <span class="sub">Update history</span>
         <p style="font-size:0.85rem">Host additions, removals, category changes, and design updates.</p>
       </a>
 
-      <a href="trusthost.html" class="card" style="text-decoration:none;color:inherit">
+      <a href="trusthost.html" class="card anim-card" style="text-decoration:none;color:inherit">
         <h3>TrustHost</h3>
         <span class="sub">Successor platform</span>
         <p style="font-size:0.85rem">Open-source review platform replacing FLHL. Currently in development.</p>
       </a>
     </div>
 
-    <div class="card" style="margin-top:20px;text-align:center">
+    <div class="card anim-card" style="margin-top:20px;text-align:center">
       <h3>Related resources</h3>
       <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px">
         <a href="https://myuui.com/" class="btn btn-secondary btn-sm" target="_blank">FreeMinecraftHostsList</a>
@@ -106,7 +106,7 @@
   </div>
 </main>
 
-<footer>
+<footer class="anim-fade">
   <div class="container">
     <p>Copyright &copy; 2026 WhiTeik. All rights reserved.</p>
     <p><a href="license.html">License (CC BY-NC-ND 4.0)</a></p>
@@ -114,8 +114,19 @@
 </footer>
 
 <script>
-function toggleNav(){document.getElementById('mainNav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')}
-function toggleTheme(){var t=document.documentElement.getAttribute('data-theme');document.documentElement.setAttribute('data-theme',t==='light'?'dark':'light');localStorage.setItem('theme',document.documentElement.getAttribute('data-theme'))}
+(function(){
+  var nav=document.getElementById('mainNav'),overlay=document.getElementById('navOverlay'),ham=document.getElementById('hamburgerBtn'),close=document.getElementById('navCloseBtn'),themeBtns=document.querySelectorAll('.theme-btn, .theme-btn-mobile');
+  function openNav(){nav.classList.add('open');overlay.classList.add('open');overlay.removeAttribute('aria-hidden');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+  function closeNav(){nav.classList.remove('open');overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';ham.focus()}
+  function toggleNav(){nav.classList.contains('open')?closeNav():openNav()}
+  function toggleTheme(){var t=document.documentElement.getAttribute('data-theme'),n=t==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n)}
+  if(ham)ham.addEventListener('click',toggleNav);
+  if(close)close.addEventListener('click',toggleNav);
+  if(overlay)overlay.addEventListener('click',toggleNav);
+  for(var i=0;i<themeBtns.length;i++)themeBtns[i].addEventListener('click',function(e){e.stopPropagation();toggleTheme()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav&&nav.classList.contains('open'))closeNav()});
+  if(nav)nav.addEventListener('keydown',function(e){if(e.key==='Tab'){var f=nav.querySelectorAll('a, button, [tabindex]'),fi=Array.prototype.indexOf.call(f,document.activeElement);if(e.shiftKey&&fi===0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&fi===f.length-1){e.preventDefault();f[0].focus()}}});
+})();
 </script>
 </body>
 </html>
