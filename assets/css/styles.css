@@ -229,9 +229,9 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .desc-bad{background:rgba(239,68,68,0.06);border-color:var(--negative);color:var(--negative)}
 
 /* Card actions */
-.card-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.card-actions .btn{white-space:nowrap;flex-shrink:0}
-.card-actions .btn-ghost{min-width:100px;justify-content:center}
+.card-actions{display:flex;gap:4px;margin-top:8px;flex-wrap:nowrap;overflow-x:auto}
+.card-actions .btn{white-space:nowrap;flex-shrink:0;padding:5px 10px;font-size:0.78rem}
+.card-actions .btn-ghost{min-width:auto;justify-content:center}
 
 /* Toggle */
 .toggle-content{display:none;margin-top:12px;padding:12px;border-radius:var(--radius);background:var(--surface);border-left:3px solid var(--accent)}
