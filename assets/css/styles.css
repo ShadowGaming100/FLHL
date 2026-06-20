@@ -195,10 +195,9 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 /* Specs */
 .specs{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
 .spec{
-  font-size:0.78rem;padding:3px 8px;border-radius:4px;
+  font-size:0.75rem;padding:2px 6px;border-radius:4px;
   background:var(--surface);color:var(--text-secondary);border:1px solid var(--border);
-  display:inline-flex;align-items:center;gap:3px;
-  transition:background 0.2s ease,color 0.2s ease,border-color 0.2s ease;
+  display:inline-flex;align-items:center;gap:3px;white-space:nowrap;
 }
 .spec:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .spec .flag{width:16px;height:11px;border-radius:1px;object-fit:cover}
@@ -252,7 +251,7 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 /* Flags */
 .flags{display:inline-flex;gap:6px;margin-left:4px;vertical-align:middle;flex-wrap:wrap}
 .flags img,.flag-item>.flag{width:18px;height:12px;border-radius:1px;object-fit:cover}
-.flag-item{display:inline-flex;align-items:center;gap:3px}
+.flag-item{display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
 .flag-item>.flag{width:18px;height:12px;border-radius:1px;object-fit:cover}
 .flag-name{font-size:0.75rem;color:var(--text-secondary)}
 

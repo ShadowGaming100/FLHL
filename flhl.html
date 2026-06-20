@@ -112,11 +112,8 @@
         </select>
       </div>
       <div class="toolbar-actions">
-        <button class="btn btn-secondary btn-sm" onclick="expandAll()">
+        <button class="btn btn-secondary btn-sm" id="toggleAllBtn" onclick="toggleAllDetails()">
           <i class="bi bi-chevron-down"></i> Expand
-        </button>
-        <button class="btn btn-secondary btn-sm" onclick="collapseAll()">
-          <i class="bi bi-chevron-up"></i> Collapse
         </button>
         <button class="btn btn-ghost btn-sm" onclick="resetFilters()">
           <i class="bi bi-x-circle"></i> Clear
@@ -226,7 +223,7 @@ function renderHosts(tab){
       +'<div class="rating"><span class="rating-stars">'+ratingStars+'</span> '+host.rating+'</div>'
       +'</div></div>'
       +'<div class="specs">'
-      +'<span class="spec"><i class="bi bi-chip"></i> '+host.ram+'</span>'
+      +'<span class="spec"><i class="bi bi-memory"></i> '+host.ram+'</span>'
       +'<span class="spec"><i class="bi bi-hdd"></i> '+host.disk+'</span>'
       +(cpuUsage?'<span class="spec"><i class="bi bi-cpu"></i> '+cpuUsage+'</span>':'')
       +'<span class="spec"><i class="bi '+up24icon+'" '+up24cls+'></i> 24/7</span>'
@@ -252,6 +249,19 @@ function toggleDetail(id,btn){
 }
 function expandAll(){document.querySelectorAll('.toggle-content').forEach(function(e){e.classList.add('open')})}
 function collapseAll(){document.querySelectorAll('.toggle-content').forEach(function(e){e.classList.remove('open')})}
+function toggleAllDetails(){
+  var panels=document.querySelectorAll('.toggle-content');
+  var allOpen=true;
+  panels.forEach(function(e){if(!e.classList.contains('open'))allOpen=false});
+  var btn=document.getElementById('toggleAllBtn');
+  if(allOpen){
+    collapseAll();
+    btn.innerHTML='<i class="bi bi-chevron-down"></i> Expand';
+  }else{
+    expandAll();
+    btn.innerHTML='<i class="bi bi-chevron-up"></i> Collapse';
+  }
+}
 
 var currentTab='all';
 function switchTab(tab){
