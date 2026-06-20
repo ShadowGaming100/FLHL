@@ -256,9 +256,11 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .flag-name{font-size:0.75rem;color:var(--text-secondary)}
 
 /* Filters */
-.filter-group{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.filter-group{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.filter-item{display:flex;flex-direction:column;gap:2px}
+.filter-label{font-size:0.7rem;color:var(--text-dim);font-weight:500;text-transform:uppercase;letter-spacing:0.03em}
 .filter-group select{
-  padding:6px 10px;border-radius:var(--radius);
+  padding:5px 10px;border-radius:var(--radius);
   background:var(--surface);border:1px solid var(--border);
   color:var(--text);font-family:var(--font);font-size:0.8rem;
   cursor:pointer;transition:var(--transition);

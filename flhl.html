@@ -72,44 +72,62 @@
 
     <div class="toolbar anim-fade">
       <div class="filter-group">
-        <select id="fRating" onchange="applyFilters()">
-          <option value="">Rating</option>
-          <option value="4+">4+</option>
-          <option value="3+">3+</option>
-          <option value="2+">2+</option>
-          <option value="1+">1+</option>
-          <option value="0+">Any</option>
-        </select>
-        <select id="fRam" onchange="applyFilters()">
-          <option value="">RAM</option>
-          <option value="8+">8 GB+</option>
-          <option value="4+">4 GB+</option>
-          <option value="2+">2 GB+</option>
-          <option value="1+">1 GB+</option>
-        </select>
-        <select id="fDisk" onchange="applyFilters()">
-          <option value="">Disk</option>
-          <option value="20+">20 GB+</option>
-          <option value="10+">10 GB+</option>
-          <option value="5+">5 GB+</option>
-          <option value="2+">2 GB+</option>
-        </select>
-        <select id="fLocation" onchange="applyFilters()">
-          <option value="">Location</option>
-        </select>
-        <select id="fUp24" onchange="applyFilters()">
-          <option value="">24/7</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-          <option value="yes?">Unsure</option>
-        </select>
-        <select id="fCpu" onchange="applyFilters()">
-          <option value="">CPU</option>
-          <option value="500+">500%+</option>
-          <option value="200+">200%+</option>
-          <option value="100+">100%+</option>
-          <option value="50+">50%+</option>
-        </select>
+        <div class="filter-item">
+          <label class="filter-label">Rating</label>
+          <select id="fRating" onchange="applyFilters()">
+            <option value="">All</option>
+            <option value="4+">4+</option>
+            <option value="3+">3+</option>
+            <option value="2+">2+</option>
+            <option value="1+">1+</option>
+            <option value="0+">Any</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label class="filter-label">RAM</label>
+          <select id="fRam" onchange="applyFilters()">
+            <option value="">All</option>
+            <option value="8+">8 GB+</option>
+            <option value="4+">4 GB+</option>
+            <option value="2+">2 GB+</option>
+            <option value="1+">1 GB+</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label class="filter-label">Disk</label>
+          <select id="fDisk" onchange="applyFilters()">
+            <option value="">All</option>
+            <option value="20+">20 GB+</option>
+            <option value="10+">10 GB+</option>
+            <option value="5+">5 GB+</option>
+            <option value="2+">2 GB+</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label class="filter-label">Location</label>
+          <select id="fLocation" onchange="applyFilters()">
+            <option value="">All</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label class="filter-label">Uptime</label>
+          <select id="fUp24" onchange="applyFilters()">
+            <option value="">All</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="yes?">Unsure</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label class="filter-label">CPU</label>
+          <select id="fCpu" onchange="applyFilters()">
+            <option value="">All</option>
+            <option value="500+">500%+</option>
+            <option value="200+">200%+</option>
+            <option value="100+">100%+</option>
+            <option value="50+">50%+</option>
+          </select>
+        </div>
       </div>
       <div class="toolbar-actions">
         <button class="btn btn-secondary btn-sm" id="toggleAllBtn" onclick="toggleAllDetails()">
@@ -247,8 +265,8 @@ function toggleDetail(id,btn){
   el.classList.toggle('open');
   btn.innerHTML=el.classList.contains('open')?'<i class="bi bi-info-circle"></i> Hide':'<i class="bi bi-info-circle"></i> Details';
 }
-function expandAll(){document.querySelectorAll('.toggle-content').forEach(function(e){e.classList.add('open')})}
-function collapseAll(){document.querySelectorAll('.toggle-content').forEach(function(e){e.classList.remove('open')})}
+function expandAll(){document.querySelectorAll('.toggle-content').forEach(function(e){e.classList.add('open')});document.querySelectorAll('.card-actions .btn-ghost').forEach(function(b){if(b.textContent.trim()==='Details')b.innerHTML='<i class="bi bi-info-circle"></i> Hide'})}
+function collapseAll(){document.querySelectorAll('.toggle-content').forEach(function(e){e.classList.remove('open')});document.querySelectorAll('.card-actions .btn-ghost').forEach(function(b){if(b.textContent.trim()==='Hide')b.innerHTML='<i class="bi bi-info-circle"></i> Details'})}
 function toggleAllDetails(){
   var panels=document.querySelectorAll('.toggle-content');
   var allOpen=true;
